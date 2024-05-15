@@ -1,0 +1,60 @@
+<!-- @if(tipo()=='B') {
+<div>
+  @for (item of posts; track item.id) {
+  <div style="border-bottom: 1px solid #eeeeee;    background: #f1f1f1;" class="row">
+
+    <div class="col-6 col-md-1 center"><button style="width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background: red;
+    border: none;    cursor: default;
+"></button></div>
+    <div class="col-12 col-md-11">
+      <div style="font-size: 2rem;" class="row"><b>{{item.title}}</b></div>
+      <div style="font-size: 1rem;" class="row">
+        <p>{{item.body}}</p>
+      </div>
+    </div>
+  </div>
+  <br>
+  }
+</div>
+}
+ -->
+
+
+
+
+<div>
+  @for (item of posts; track item.id) {
+  <div class="row principalContainer">
+
+    <div class="col-6 col-md-1 quadratoUser">
+      <button class="buttonModerato
+  ">
+        {{tipo()=='M' ?
+        item.user.name.split(' ')[0].charAt(0)
+        +' ' + item.user.name.split(' ')[1].charAt(0) : ''
+        }}</button>
+
+
+    </div>
+    <div class="col-12 col-md-11">
+      <div style="font-size: 2rem;" class="row"><b [style.color]="tipo()=='M' ? 'red' : 'black'">{{item.title}}</b>
+      </div>
+      <div style="font-size: 1rem;" class="row">
+
+
+        <p style="font-size: 0.75rem;">
+
+
+          Pubblicato da <u style="color: red;"> {{item.user.username}}</u>
+        </p>
+
+
+      </div>
+    </div>
+  </div>
+
+  }
+</div>
