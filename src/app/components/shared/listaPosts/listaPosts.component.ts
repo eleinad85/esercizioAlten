@@ -1,6 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, OnInit, input } from '@angular/core';
+import { Component, OnInit, input, ViewChild, BootstrapOptions } from '@angular/core';
 import { forkJoin, map, switchMap } from 'rxjs';
 import { Post } from '../../../../models/post.interface';
 import { User } from '../../../../models/user.interface';
@@ -12,10 +12,12 @@ import { UsersService } from '../../../../services/users.service';
   templateUrl: './listaPosts.component.html',
   styleUrls: ['./listaPosts.component.css'],
   standalone: true,
-
-
+  imports: [NgFor, NgIf],
 })
+
 export class ListaPostsComponent implements OnInit {
+
+  @ViewChild('modalInfoVc') modalInfoVc: any;
   tipo = input<string>('')
   posts: Post[] = []
   users: User[] = []

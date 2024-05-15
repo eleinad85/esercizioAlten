@@ -8,6 +8,7 @@ import { ListaPostsComponent } from '../shared/listaPosts/listaPosts.component';
   standalone: true,
   imports: [ListaPostsComponent]
 })
+
 export class ListaEsercizioModeratoComponent implements OnInit {
 
   constructor() { }
