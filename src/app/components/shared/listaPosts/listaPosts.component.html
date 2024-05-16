@@ -1,49 +1,29 @@
-<div *ngFor="let item of posts" class="row principalContainer">
+@for(item of posts; track item.id)
+{
+<div class="row principalContainer">
 
   <div class="col-6 col-md-1 quadratoUser">
-
-
-
-    <button data-toggle="modal" data-target="#modalInfo" class="buttonModerato
+    <button (click)="openDialog('500ms', '500ms',item)" class="buttonModerato
   ">
       {{
 
-      tipo()=='M' ?
+      tipo()==='M' ?
       item.user.name.split(' ')[0].charAt(0)
       +' ' + item.user.name.split(' ')[1].charAt(0) : ''
 
       }}</button>
   </div>
   <div class="col-12 col-md-11">
-    <div style="font-size: 2rem;" class="row"><b [style.color]="tipo()=='M' ? 'red' : 'black'">{{item.title}}</b>
+    <div class="row">
+      <b class="title" [style.color]="tipo()==='M' ? 'red' : 'black'">{{item.title}}</b>
     </div>
-    <div style="font-size: 1rem;" class="row">
-      <p style="font-size: 0.75rem;">
-        <span [hidden]="tipo()=='M'">{{item.body}}</span>
-        <span [hidden]="tipo()=='B'">Pubblicato da <u style=" color: red;"> {{item.user.username}}</u></span>
+    <div class="row">
+      <p>
+        <span class="content" [hidden]="tipo()==='M'">{{item.body}}</span>
+        <span class="autore" [hidden]="tipo()==='B'">Pubblicato da <u class="colorRed">
+            {{item.user.username}}</u></span>
       </p>
     </div>
   </div>
 </div>
-
-
-
-
-
-<!-- Modal -->
-<div #modalInfoVc class="modal fade" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-
-      </div>
-      <div class="modal-body">
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
-      </div>
-    </div>
-  </div>
-</div>
+}

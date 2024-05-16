@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Dettagli post</h2>
+
+<mat-dialog-content>
+  <p>
+    <span class="autore">Post pubblicato da :
+      {{data.post.user.name}} alias <u class="colorRed">{{data.post.user.username}}</u></span>
+  </p>
+
+  <p class="title colorRed"> {{data.post.title}}</p>
+
+  <p class="content"><span> {{data.post.body}}</span></p>
+  <button class="buttonModale" mat-button mat-dialog-close>Chiudi</button>
+</mat-dialog-content>

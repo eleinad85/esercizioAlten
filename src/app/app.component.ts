@@ -6,7 +6,7 @@ import { ListaPostsComponent } from './components/shared/listaPosts/listaPosts.c
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, ListaPostsComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, ListaPostsComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 

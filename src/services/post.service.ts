@@ -9,15 +9,10 @@ import { Post } from '../models/post.interface';
 })
 export class PostService {
 
-  pathApi = "posts"
-
   constructor(private http: HttpClient) { }
 
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(environment.baseUrlBe + "posts");
   }
 
-  getSinglePost(idPost: number): Observable<Post> {
-    return this.http.get<Post>(environment.baseUrlBe + "posts/" + "/" + idPost);
-  }
 }

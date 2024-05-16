@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ListaPostsComponent } from '../shared/listaPosts/listaPosts.component';
 
 @Component({
@@ -8,11 +8,5 @@ import { ListaPostsComponent } from '../shared/listaPosts/listaPosts.component';
   standalone: true,
   imports: [ListaPostsComponent]
 })
-export class ListaEsercizioBaseComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class ListaEsercizioBaseComponent {
 }

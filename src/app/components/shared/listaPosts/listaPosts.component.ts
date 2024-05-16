@@ -1,30 +1,37 @@
-import { NgFor, NgIf } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { Component, OnInit, input, ViewChild, BootstrapOptions } from '@angular/core';
-import { forkJoin, map, switchMap } from 'rxjs';
+import { Component, OnInit, input } from '@angular/core';
+import { map, switchMap } from 'rxjs';
 import { Post } from '../../../../models/post.interface';
 import { User } from '../../../../models/user.interface';
 import { PostService } from '../../../../services/post.service';
 import { UsersService } from '../../../../services/users.service';
+import {
+  MatDialog,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { ModaleComponent } from '../modale/modale.component';
 
 @Component({
   selector: 'app-listaPosts',
   templateUrl: './listaPosts.component.html',
   styleUrls: ['./listaPosts.component.css'],
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [MatDialogTitle, MatDialogContent, MatButtonModule],
 })
 
 export class ListaPostsComponent implements OnInit {
 
-  @ViewChild('modalInfoVc') modalInfoVc: any;
+
   tipo = input<string>('')
   posts: Post[] = []
   users: User[] = []
 
-  constructor(public postsService: PostService, public usersService: UsersService) { }
+  constructor(public postsService: PostService, public usersService: UsersService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
+
     this.postsService.getPosts()
       .pipe(
         switchMap(
@@ -38,21 +45,41 @@ export class ListaPostsComponent implements OnInit {
       )
       .subscribe(
         result => {
-          for (let i = 0; i < result.posts.length; i++) {
-            let postUserId = result.posts[i].userId;
 
-            for (let j = 0; j < result.users.length; j++) {
-              let id = result.users[j].id;
-              if (postUserId == id)
-                result.posts[i].user = result.users[j]
+          let posts = result.posts
+          let users = result.users
 
+
+          for (let i = 0; i < posts.length; i++) {
+            let postUserId = posts[i].userId;
+
+            for (let j = 0; j < users.length; j++) {
+              let id = users[j].id;
+              if (postUserId === id)
+                posts[i].user = users[j]
             }
           }
-          this.posts = result.posts
+
+          this.posts = posts
 
         }
       )
 
   }
 
+
+  openDialog(enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    post: Post,
+  ): void {
+
+    if (this.tipo() === 'M')
+      this.dialog.open(ModaleComponent, {
+        data: { post },
+        width: '800px',
+        enterAnimationDuration,
+        exitAnimationDuration,
+      });
+
+  }
 }

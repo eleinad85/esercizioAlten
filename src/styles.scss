@@ -1,1 +1,26 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+.content {
+    font-size: 1rem;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.colorRed {
+    color: red
+}
+
+.autore {
+    font-size: 0.75rem
+}
+
+
+@media (max-width: 992px) {
+    .col-md-1 {
+        flex: 0 0 auto;
+        width: auto;
+    }
+}

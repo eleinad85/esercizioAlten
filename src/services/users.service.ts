@@ -14,8 +14,5 @@ export class UsersService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(environment.baseUrlBe + "users");
   }
-  getSingleUser(idUser: number): Observable<User> {
-    return this.http.get<User>(environment.baseUrlBe + "users/" + idUser);
-  }
 
 }

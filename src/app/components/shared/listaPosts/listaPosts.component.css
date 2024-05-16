@@ -1,23 +1,22 @@
 .principalContainer{
-    
-    border-bottom: 1px solid #eeeeee;    background: #f8f8f8;
+    border-bottom: 1px solid #eeeeee;    
+    background: #fafafa;
 }
 
 
 .quadratoUser{
     display: flex;
-    align-items: center;justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
-
-
 
 
 .buttonModerato{
     width: 50px;color: white;
     font-weight: 500;
     font-size:larger;
-      height: 50px;
-      border-radius: 5px;
-      background: red;
-      border: none;    cursor: pointer;
+    height: 50px;
+    border-radius: 5px;
+    background: red;
+    border: none;    
 }
